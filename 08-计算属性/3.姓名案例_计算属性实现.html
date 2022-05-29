@@ -42,6 +42,8 @@
                     console.log('获取fullName')
                     return this.firstName + '-' + this.lastName
                 },
+
+                // set什么时候调用？ 当fullName被修改时调用 
                 set(value) {
                     console.log('修改fullName的值'+value)
                     let array = value.split('-')

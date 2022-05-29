@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案件_计算属性简写</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        姓：<input type="text" v-model="firstName"> <br/><br/>
+        名：<input type="text" v-model="lastName"> <br/><br/>
+        <!-- 名：<input type="text" v-model="fullName"> <br/><br/> -->
+        全名：<span>{{fullName}}</span>
+    </div>
+
+    <script>
+        const vm = new Vue({
+        el: '#root',
+        data: {
+            firstName: '张',
+            lastName: '三'
+        },
+        computed: {
+            // 完整写法
+            // fullName: {
+            //     get() {
+            //         console.log('获取fullName')
+            //         return this.firstName + '-' + this.lastName
+            //     },
+
+            //     // set什么时候调用？ 当fullName被修改时调用 
+            //     set(value) {
+            //         console.log('修改fullName的值'+value)
+            //         let array = value.split('-')
+            //         this.firstName = array[0]
+            //         this.lastName = array[1]
+            //     }
+            // }
+
+            // 简写(当该计算属性不用修改时(不用setter时)可以简写）
+            fullName(){          
+                console.log('获取fullName')
+                return this.firstName + '-' + this.lastName
+            },
+        }
+    })
+    </script>
+</body>
+</html>
